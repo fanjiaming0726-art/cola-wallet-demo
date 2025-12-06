@@ -1,0 +1,6 @@
+WalletServiceTestComponent.testServiceCall() →
+walletService.getWallet() →
+WalletDubboServiceImpl.getWallet() →
+walletAppService.findWalletById() →
+walletRepository.findById() →
+InMemoryWalletRepositoryImpl.findById()

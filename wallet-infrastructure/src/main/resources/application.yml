@@ -1,0 +1,15 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: wallet-provider-service # 注册到 Nacos 的服务名
+  main:
+    allow-bean-definition-overriding: true
+dubbo:
+  application:
+    name: ${spring.application.name}
+  registry:
+    address: nacos://127.0.0.1:8848 # Nacos 服务器地址
+  protocol:
+    name: dubbo
+    port: 20880 # Dubbo 协议端口
