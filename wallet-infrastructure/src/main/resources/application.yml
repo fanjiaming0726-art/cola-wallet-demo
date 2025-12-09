@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8081
 spring:
   application:
     name: wallet-provider-service # 注册到 Nacos 的服务名
@@ -13,4 +13,29 @@ dubbo:
   protocol:
     name: dubbo
     port: 20880 # Dubbo 协议端口
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: wallet.log
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  metrics:
+    tags:
+      application: ${spring.application.name}
+# Jaeger配置
+opentracing:
+  jaeger:
+    service-name: ${spring.application.name}
+    udp-sender:
+      host: localhost
+      port: 6831
+    sampler:
+      type: const
+      param: 1.0
+    log-spans: true
 
